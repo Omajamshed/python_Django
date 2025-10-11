@@ -1,0 +1,34 @@
+{% extends 'finance/base.html' %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto mt-10">
+    <h2 class="text-2xl font-bold mb-5">Your Transactions</h2>
+
+    {% if transactions %}
+        <table class="min-w-full bg-white border border-gray-200">
+            <thead>
+                <tr class="bg-gray-100 text-left">
+                    <th class="py-2 px-4">Title</th>
+                    <th class="py-2 px-4">Amount</th>
+                    <th class="py-2 px-4">Type</th>
+                    <th class="py-2 px-4">Date</th>
+                    <th class="py-2 px-4">Category</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in transactions %}
+                    <tr class="border-t">
+                        <td class="py-2 px-4">{{ transaction.title }}</td>
+                        <td class="py-2 px-4">{{ transaction.amount }}</td>
+                        <td class="py-2 px-4">{{ transaction.transaction_type }}</td>
+                        <td class="py-2 px-4">{{ transaction.date }}</td>
+                        <td class="py-2 px-4">{{ transaction.category }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No transactions found.</p>
+    {% endif %}
+</div>
+{% endblock %}
